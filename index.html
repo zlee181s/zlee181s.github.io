@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zlee's Space</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav>
+    <input type="text" id="searchInput" placeholder="搜索文章...">
+    <a onclick="showSection('recommend')">我的推荐</a>
+    <a onclick="showSection('sofa')">沙发人格</a>
+    <a onclick="showSection('sports')">运动一生</a>
+    <a onclick="showSection('music')">挚爱音乐</a>
+    <a onclick="showSection('finance')">投资理财</a>
+  </nav>
+
+  <section id="welcome" class="active">
+    <h1>Hi, I'm Zlee.</h1>
+    <p>181s. Slimfit & Deepthink.</p>
+    <p>美式大V8，环保去tm。</p>
+  </section>
+
+  <section id="recommend">
+    <h2>我的推荐</h2>
+    <p>值得</p>
+    <article class="preview">
+      <a href="article/recommend/001.html">
+        <img src="images/recommend/001.jpg" alt="推荐书单">
+        <h3>每个人都该读的三本书</h3>
+        <p>阅读是人类进步的阶梯，这三本书将影响你的人生观...</p>
+      </a>
+      <span class="date">2025-07-06</span>
+    </article>
+  </section>
+
+  <section id="sofa">
+    <h2>沙发人格</h2>
+    <p>人首先是研究人</p>
+    <article class="preview">
+      <a href="article/sofa/001.html">
+        <img src="images/sofa/001.jpg" alt="沙发">
+        <h3>一个人宅着的意义</h3>
+        <p>不出门、不社交，也许是现代人应对信息过载的一种方式...</p>
+      </a>
+      <span class="date">2025-07-05</span>
+    </article>
+  </section>
+
+  <section id="sports">
+    <h2>运动一生</h2>
+    <p>容貌无法改变（也不建议改变）但是体能可以改变</p>
+    <article class="preview">
+      <a href="articles/sports/001.html">
+        <img src="images/sports/001.jpg" alt="力量训练">
+        <h3>健身房新手指南</h3>
+        <p>第一次进健身房别怕，这篇文章告诉你从哪开始...</p>
+      </a>
+      <span class="date">2025-07-07</span>
+    </article>
+    <article class="preview">
+      <a href="article/sports/002.html">
+        <img src="images/sports/002.jpg" alt="跑步">
+        <h3>跑步的力量</h3>
+        <p>跑步不仅仅是锻炼身体，更是一种精神的修行...</p>
+      </a>
+      <span class="date">2025-07-04</span>
+    </article>
+  </section>
+
+  <section id="music">
+    <h2>挚爱音乐</h2>
+    <p>人这辈子就是为了弹拉二（第一乐章第二主题）</p>
+    <article class="preview">
+      <a href="article/music/001.html">
+        <img src="images/music/001.jpg" alt="音乐">
+        <h3>舒曼与深夜钢琴</h3>
+        <p>深夜独处时，音乐的温度能唤起最柔软的记忆...</p>
+      </a>
+      <span class="date">2025-07-03</span>
+    </article>
+  </section>
+
+  <section id="finance">
+    <h2>投资理财</h2>
+    <p>赚不到认知以外的money</p>
+    <article class="preview">
+      <a href="article/finance/001.html">
+        <img src="images/finance/001.jpg" alt="理财">
+        <h3>投资第一课：认知边界</h3>
+        <p>你赚不到超出你认知范围以外的钱...</p>
+      </a>
+      <span class="date">2025-07-02</span>
+    </article>
+  </section>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll("section");
+      sections.forEach((sec) => {
+        sec.classList.remove("active");
+      });
+      document.getElementById(id).classList.add("active");
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      document.querySelectorAll('article.preview').forEach(article => {
+        const text = article.textContent.toLowerCase();
+        if (text.includes(query)) {
+          article.style.display = 'block';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
